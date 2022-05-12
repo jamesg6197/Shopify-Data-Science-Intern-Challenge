@@ -1,0 +1,20 @@
+1. 
+SELECT COUNT(ShipperID) FROM [Orders] where ShipperID = 1;
+
+2.
+select EmployeeID,count(*)
+from Orders
+Group by EmployeeID
+
+3. 
+SELECT p.ProductName FROM OrderDetails od
+JOIN Orders o
+ON od.OrderID = o.OrderID
+JOIN Customers c
+ON o.CustomerID = c.CustomerID
+JOIN Products p
+ON p.ProductID = od.ProductID
+WHERE c.country = "Germany"
+GROUP BY p.productID
+ORDER BY sum(quantity) desc
+LIMIT 1
